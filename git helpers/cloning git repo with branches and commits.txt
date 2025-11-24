@@ -1,0 +1,24 @@
+git clone <OLD-REPO-URL> 
+
+
+git remote -v
+# should show something like: origin  <OLD-REPO-URL> (fetch/push)
+
+# Fetch everything (all remote branches + tags)
+git fetch origin --prune
+git fetch origin --tags
+
+
+git remote add new <NEW-REPO-URL>
+
+git remote -v
+
+git push new --all
+
+git push new --tags
+
+git push new 'refs/remotes/origin/*:refs/heads/*'
+
+git remote remove origin
+# and if you like, rename `new` → `origin` for convenience
+git remote rename new origin
